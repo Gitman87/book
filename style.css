@@ -1,0 +1,257 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "sketchy";
+  src: url(fonts/Delicious_Handrawn/DeliciousHandrawn-Regular.ttf);
+}
+@font-face {
+  font-family: "comic";
+  src: url(fonts/Comic_Neue/ComicNeue-Light.ttf);
+}
+html {
+  font-size: calc(14px + 0.1vw);
+}
+body {
+  background-image: url(images/vector-seamless-pattern-with-books-cups-2023-11-27-05-11-46-utc/cover_500.png);
+
+  background-repeat: repeat;
+}
+.background-dimmer {
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.45);
+}
+.window {
+  width: 60%;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: radial-gradient(#ffde85 2px, transparent 2px);
+  background-size: 32px 32px;
+  background-color: #ffffff;
+}
+header {
+  position: sticky;
+  width: 100%;
+  background-color: rgb(255, 222, 133);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner-header {
+  width: 50%;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logo-and-title {
+  border: 0.3rem dotted #42c9b8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo > img {
+  width: 5.5rem;
+  position: relative;
+  bottom: 0.25rem;
+  left: 0.1rem;
+}
+.title {
+  position: relative;
+  right: 0.4rem;
+  font-family: "sketchy", sans-serif;
+  font-size: 2.5rem;
+  color: #42c9b8;
+}
+.add-and-remove {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.add,
+.remove {
+  font-family: "sketchy", sans-serif;
+  font-size: 2rem;
+  width: 8rem;
+  height: 3rem;
+  color: white;
+  border-style: none;
+  border-radius: 1rem;
+
+  /* padding: 1rem 2.5rem 1rem 2.5rem; */
+}
+.add, #add-form {
+  background-color: #42c9b8;
+}
+.add:hover,#add-form:hover {
+  background-color: #a3cec8;
+  color: gray;
+}
+
+.add:active {
+  background-color: rgb(255, 222, 133);
+  border: 0.3rem dotted #a3cec8;
+}
+.remove,#cancel {
+  background-color: #ff7900;
+}
+.remove:hover, #cancel:hover {
+  background-color: #ffc99a;
+  color: gray;
+}
+.remove:active {
+  background-color: rgb(255, 222, 133);
+  border: 0.3rem dotted #ffc99a;
+  color: black;
+}
+/* main content  */
+main {
+  padding: 5%;
+}
+.inner-main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  /* width:max-content;
+  max-width: 33%; */
+
+  border-left: 0.8rem solid #42c9b8;
+  background-color: #ffffff;
+  width: 15rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #ff7900;
+  font-family: "comic", sans-serif;
+}
+.item li {
+  display: grid;
+
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(auto-fit, minmax(1.5rem, 1fr));
+
+  flex-grow: 1;
+}
+.item p:first-child {
+  grid-column: 1/2;
+}
+.item p:last-child {
+  grid-column: 2/3;
+  overflow: scroll;
+  font-weight: 600;
+}
+/* .item li, .item li p{
+  display:flex;
+  justify-content: center;
+  text-align: center;
+ } */
+/* dialog */
+dialog {
+  z-index: 10;
+  position: fixed;
+  top:15vh;
+  left:20vw;
+  border:.2rem solid #ff7900;
+  border-radius: 1rem;
+  padding:1rem;
+  background-color: rgb(255, 222, 133);
+  font-family: "comic", sans-serif;
+}
+dialog::backdrop {
+  background-color: hsla(0, 0%, 50%, 0.507);
+}
+dialog fieldset {
+  display: flex;
+  flex-direction: column;
+  border:0;
+  
+  gap: 1rem;
+  padding: 1rem;
+}
+dialog div {
+  display: flex;
+  justify-content: space-between;
+  border: 2px dotted white;
+  padding: 0.2rem;
+}
+select{
+  font-family: comic, sans-serif;
+}
+dialog input{
+  border-radius: .4rem;
+  border-style: none;
+  padding:.2rem;
+}
+dialog input:focus{
+  outline: .15rem solid#42c9b8;
+}
+legend{
+  font-weight: 600;
+  font-size:1.5rem;
+}
+dialog input{
+  font-family: comic, sans-serif;
+}
+.cover-ask-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* #cover-ask{
+  display:none;
+  
+} */
+#cover-ask::file-selector-button, #cancel,#add-form {
+  font-family: "comic", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  color: white;
+  border-style: none;
+  border-radius: 1rem;
+}
+#cover-ask::file-selector-button {
+  background-color: #a3cec8;
+  
+}
+#cover-ask::file-selector-button:hover {
+  background-color: #a3cec8;
+  color: gray;
+}
+
+#cover-ask::file-selector-button:active {
+  background-color: rgb(255, 222, 133);
+}
+.button-dialog-section{
+  display: flex;
+  justify-content: end;
+  gap:1rem;
+  padding:  0 1rem;
+  border:none;
+}
+.button-dialog-section button{
+  width: 5rem;
+}
+#cancel:active, #add-form:active{
+  background-color: rgb(255, 222, 133);
+  color:black;
+}
+
+

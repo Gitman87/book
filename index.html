@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-dimmer">
+      <div class="window">
+        <header>
+          <div class="inner-header">
+            <div class="logo-and-title">
+              <div class="logo">
+                <img src="images/library logo.svg"  alt="cat lying on the books" />
+              </div>
+              <div class="title"><strong>Library</strong></div>
+            </div>
+            <div class="add-and-remove">
+              <button class="add">Add</button>
+              <button class="remove">Remove</button>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="inner-main">
+            <div class="item">
+              <div class="mark">
+                <form action="book.js" method="post" id="mark-form">
+                  <label for="mark">Select</label>
+                  <input type="checkbox" name="mark">
+                </form>
+              </div>
+             <ul>
+              <li> 
+                <p>Title:</p>
+                <p>Quo Vadis</p>
+              </li>
+              <li>
+                <p>Author:</p>
+                <p>Henryk Sienkiewicz </p>
+              </li>
+              <li>
+                <p>Publisher:</p>
+                <p>Litera</p>
+              </li>
+              <li>
+                <p>Year:</p>
+                <p>1990</p>
+              </li>
+              <li>
+                <p>Pages:</p>
+                <p>675</p>
+              </li>
+              <li>
+                <p>Genre:</p>
+                <p>Drama</p>
+              </li>
+             </ul> 
+             
+            <div class="read">
+              <form action="book.js" method="post"  id="read-form">
+                <label for="read">Read</label>
+                <input type="checkbox" name="read">
+            </div>
+             
+            </div>
+            <div class="new-book"></div>
+            <dialog id="add-book">
+              <form action="" class="dialog-form" method="dialog" id="book-form">
+                <fieldset>
+                  <legend>Add a book</legend>
+                  <div class="title-ask-cont">
+                    <label for="title-ask">Title</label>
+                    <input type="text" id="title-ask" name="title-ask" placeholder="Deco Moreno" maxlength="30" >
+                  </div>
+                  <div class="author-ask-cont">
+                    <label for="author-ask">Author</label>
+                    <input type="text" id="author-ask" name="author-ask" placeholder="Henryk Sienkiewicz" maxlength="30">
+                  </div>
+                  <div class="publ-ask-cont">
+                    <label for="pub-ask">Publisher</label>
+                    <input type="text" id="pub-ask" name="pub-ask" placeholder="Wydawnictwo Literackie" maxlength="30">
+                  </div>
+                  <div class="year-ask-cont">
+                    <label for="year-ask">Year</label>
+                    <input type="number" id="year-ask" name="year-ask"  step="1" value="2010">
+                  </div>
+                  <div class="pages-ask-cont">
+                    <label for="year-ask">Pages</label>
+                    <input type="number" id="pages-ask" name="pages-ask" step="1" value="200">
+                  </div>
+                  <div class="genre-ask-cont">
+                    <label for="genres">Genre</label>
+                      <select name="genres" id="genres" class="select-genre" >
+                      
+                        <option value="drama">Drama</option>
+                        <option value="criminal">Criminal</option>
+                        <option value="handbook">Handbook</option>
+                        <option value="thiller">Thiller</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="science-fiction">Science-fiction</option>
+                        <option value="horror">Horror</option>
+                        <option value="action">Action</option>
+                        <option value="biography">Biography</option>
+                      </select>
+                  </div>
+                  <div class="cover-ask-cont">
+                    <label for="year-ask">Cover</label>
+                    <input type="file" id="cover-ask" name="cover-ask"  accept="image/png, image/jpeg, image/webp" >
+                  </div>
+                 
+                </fieldset>
+                <div class="button-dialog-section">
+                    <button formmethod="dialog" id="cancel" type="submit">Cancel</button>
+                    
+                    <button type="submit" id="add-form">Add</button>
+                </div>
+              </form>
+            </dialog>
+
+          </div>
+          
+        </main>
+      </div>
+    </div>
+
+    <script src="book.js"></script>
+  </body>
+</html>
