@@ -1,13 +1,15 @@
 const myLibrary = [];
-function Book(title, author, publisher, year, pages, genre, cover, read) {
+function Book(title, author, publisher, year, pages, genre, cover, read, select) {
+  this.select=select;
   this.title = title;
   this.author = author;
   this.publisher = publisher;
   this.pages = pages;
   this.year = year;
   this.genre = genre;
-  this.read = read;
+  
   this.cover = cover;
+  this.read = read;
   this.info = function () {
     if (this.read === "read") {
       return `${this.title} by ${this.author}, ${this.pages} pages, read.`;
@@ -116,6 +118,8 @@ function addBookToLibrary() {
   const pagesInput = document.querySelector("#pages-ask").value;
   const genresInput = document.querySelector("#genres").value;
   const coverInput = document.querySelector("#cover-ask").value;
+  
+  
 
   //assign a name to new book-number-check library length and add 1
   // let numberInLibrary= myLibrary.length;
@@ -134,7 +138,8 @@ function addBookToLibrary() {
     yearInput,
     pagesInput,
     genresInput,
-    coverInput
+    coverInput, 
+    
   );
   // add to array of library
   myLibrary.push(book);
@@ -144,56 +149,120 @@ function addBookToLibrary() {
   <div class="mark">
     <form action="book.js" method="post" id="mark-form">
       <label for="mark">Select</label>
-      <input type="checkbox" name="mark">
+      <input type="checkbox" name="mark" id="mark">
     </form>
   </div>
  <ul>
   <li> 
     <p class="para-title">Title:</p>
-    <p class="para-title-value"></p>
+    <p class="para-title-value">${titleInput}</p>
   </li>
   <li>
     <p class="para-author">Author:</p>
-    <p class="para-author-value"></p>
+    <p class="para-author-value">${authorInput}</p>
   </li>
   <li>
     <p class="para-publisher">Publisher:</p>
-    <p class="para-publisher-value"></p>
+    <p class="para-publisher-value">${publisherInput}</p>
   </li>
   <li>
     <p class="para-year">Year:</p>
-    <p class="para-year-value"></p>
+    <p class="para-year-value">${yearInput}</p>
   </li>
   <li>
     <p class="para-pages">Pages:</p>
-    <p class="para-pages-value"></p>
+    <p class="para-pages-value">${pagesInput}</p>
   </li>
   <li>
     <p class="para-genre">Genre:</p>
-    <p class="para-genre-value"></p>
+    <p class="para-genre-value">${genresInput}</p>
   </li>
  </ul> 
  
 <div class="read">
   <form action="book.js" method="post"  id="read-form">
     <label for="read">Read</label>
-    <input type="checkbox" name="read">
+    <input type="checkbox" name="read" id="read">
 </div>
  
 </div>`;
   const newDivItem = document.createElement("div");
-  newDivItem.classList.add("new-book");
+  newDivItem.classList.add(`new-book-${i}`);
   newDivItem.innerHTML = itemHtml;
-  shelf.appendChild(newDivItem);
-  const newItem = document.querySelector(`#item-${i}`);
+  //assign object's values to inner html
 
+  shelf.appendChild(newDivItem);
+
+  //read checkbox listener
+  const readCheckbox = document.querySelector(`#item-${i} #read`);
+  readCheckbox.addEventListener('click', ()=>
+  { 
+
+    if(myLibrary[i-1].read=== "read")
+    {
+      myLibrary[i-1].read="unread";
+      console.log(myLibrary[i-1].read);
+    }
+    else{
+      myLibrary[i-1].read="read";
+      console.log(myLibrary[i-1].read);
+    }
+    
+  })
+  //select checkbox listener
+  const selectCheckBox=document.querySelector(`#item-${i} #mark`)
+  selectCheckBox.addEventListener('click', ()=>
+  {
+    if(myLibrary[i-1].select=== "selected")
+      {
+        myLibrary[i-1].select="unselected";
+        console.log(myLibrary[i-1].select);
+      }
+      else{
+        myLibrary[i-1].select="selected";
+        console.log(myLibrary[i-1].select);
+      }
+  })
+
+
+  // //cover
+  // newItem.style.setProperty(`background-image`, `url(${newItem.coverInput}`);
   // this.reset();
 }
+const formDialog = document.querySelector("#book-form");
 submit.addEventListener("click", () => {
+  formDialog.reset();
   addBookToLibrary();
   // console.log(book1);
   console.log(myLibrary[0]);
+  console.log(myLibrary[0].read)
   console.log(myLibrary[1]);
   console.log(myLibrary[2]);
   popUp.close();
 });
+//remove listener
+const removeButton=document.querySelector('.remove');
+removeButton.addEventListener("click",() =>
+  {
+      // loop through library and search for objects select value- selected
+      for(let i=0; i<myLibrary.length; i++)
+      { console.log(myLibrary[i].select)
+        if(myLibrary[i].select === "selected"){
+          const bookToRemove=document.querySelector(`.new-book-${i+1}`);
+          if(bookToRemove){
+            bookToRemove.remove();
+            console.log("removed")
+          }
+          else{
+            console.log("item nof found")
+          }
+          
+        }
+        else{
+          console.log("next object to remove");
+        }
+      }
+  }
+  );
+
+
