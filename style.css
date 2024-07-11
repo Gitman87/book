@@ -123,6 +123,10 @@ header {
 main {
   padding: 5%;
 }
+.new-book-1{
+  height:min-content;
+  
+}
 .inner-main {
   display: flex;
   /* flex-direction: column; */
@@ -131,6 +135,7 @@ main {
   /* grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
   height: max-content; */
+  /* justify-content: space-between; */
   gap: 2rem;
 }
 .item {
@@ -144,7 +149,7 @@ main {
   border-left: 0.8rem solid #42c9b8;
   background-color: #ffffff;
   max-width: 20rem;
-  max-height: 20rem;
+ height: auto;
   padding: 1rem;
   border-radius: 1rem;
   /* background-color: #ff7900; */
@@ -172,6 +177,11 @@ main {
   overflow: scroll;
   font-weight: 600;
 }
+#mark:checked{
+ color: #42c9b8;
+  width:200px;
+}
+
 /* .item li, .item li p{
   display:flex;
   justify-content: center;

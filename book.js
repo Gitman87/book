@@ -236,7 +236,7 @@ function addBookToLibrary() {
 <div class="read">
   <form action="book.js" method="post"  id="read-form">
     <label for="read">Read</label>
-    <input type="checkbox" name="read" id="read">
+    <input type="checkbox"  id="read">
 </div>
  
 </div>`;
