@@ -40,8 +40,8 @@ const newBook = document.querySelector(".new-book");
 
 //objects
 //new book prototype
-function NewBook(title, author, publisher, year, pages, genre, cover) {
-  Book.call(this, title, author, publisher, year, pages, genre, cover);
+function NewBook(title, author, publisher, year, pages, genre, cover, read, select) {
+  Book.call(this, title, author, publisher, year, pages, genre, cover, read, select);
 }
 // Object.getPrototypeOf(NewBook.prototype);
 Object.setPrototypeOf(NewBook.prototype, Book.prototype);
@@ -118,7 +118,7 @@ function addBookToLibrary() {
   const pagesInput = document.querySelector("#pages-ask").value;
   const genresInput = document.querySelector("#genres").value;
   const coverInput = document.querySelector("#cover-ask").value;
-  
+  console.log(`title input is ${titleInput}`);
   
 
   //assign a name to new book-number-check library length and add 1
@@ -141,9 +141,11 @@ function addBookToLibrary() {
     coverInput, 
     
   );
+  console.log(book);
   // add to array of library
   myLibrary.push(book);
   //chekin
+  console.log(myLibrary);
   let i = myLibrary.length;
   const itemHtml = `<div class="item" id="item-${i}">
   <div class="mark">
@@ -231,8 +233,10 @@ function addBookToLibrary() {
 }
 const formDialog = document.querySelector("#book-form");
 submit.addEventListener("click", () => {
-  formDialog.reset();
+  
+  console.log("teraz czas na funkcje dodawania book");
   addBookToLibrary();
+  formDialog.reset();
   // console.log(book1);
   console.log(myLibrary[0]);
   console.log(myLibrary[0].read)

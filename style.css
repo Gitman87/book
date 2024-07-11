@@ -153,7 +153,7 @@ main {
 .item li {
   display: grid;
   
-  /* gap:1rem; */
+  gap:1rem;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: repeat(auto-fit, minmax(1.5rem, 1fr));
 
