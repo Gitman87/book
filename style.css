@@ -147,7 +147,7 @@ main {
   max-height: 20rem;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: #ff7900;
+  /* background-color: #ff7900; */
   font-family: "comic", sans-serif;
 }
 .item li {

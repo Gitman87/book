@@ -1,13 +1,23 @@
 const myLibrary = [];
-function Book(title, author, publisher, year, pages, genre, cover, read, select) {
-  this.select=select;
+function Book(
+  title,
+  author,
+  publisher,
+  year,
+  pages,
+  genre,
+  cover,
+  read,
+  select
+) {
+  this.select = select;
   this.title = title;
   this.author = author;
   this.publisher = publisher;
   this.pages = pages;
   this.year = year;
   this.genre = genre;
-  
+
   this.cover = cover;
   this.read = read;
   this.info = function () {
@@ -40,15 +50,59 @@ const newBook = document.querySelector(".new-book");
 
 //objects
 //new book prototype
-function NewBook(title, author, publisher, year, pages, genre, cover, read, select) {
-  Book.call(this, title, author, publisher, year, pages, genre, cover, read, select);
+function NewBook(
+  title,
+  author,
+  publisher,
+  year,
+  pages,
+  genre,
+  cover,
+  read,
+  select
+) {
+  Book.call(
+    this,
+    title,
+    author,
+    publisher,
+    year,
+    pages,
+    genre,
+    cover,
+    read,
+    select
+  );
 }
 // Object.getPrototypeOf(NewBook.prototype);
 Object.setPrototypeOf(NewBook.prototype, Book.prototype);
 // Object.getPrototypeOf(NewBook.prototype);
 // const inputValues = document.querySelectorAll("input, select");
 
-//item - book html
+//item background color randomized
+const colors = [
+  "#f19b69",
+  "#946230",
+  "#df7e36",
+  "#b1bfa0",
+  "#cbd0c9",
+  "#f2c5b0",
+  "#6d6f56",
+  "#eee9c4",
+  "#bea854",
+  "#fcf4ea",
+  "#72888d",
+  "#7da9a5",
+  "#c0853d",
+  "#ec7668",
+];
+function randomColor(colors) {
+  const number = Math.round(Math.random() * 15);
+
+  console.log(`random number is ${number}`);
+
+  return colors[number];
+}
 
 //load books on load time
 const shelf = document.querySelector(".inner-main");
@@ -118,8 +172,7 @@ function addBookToLibrary() {
   const pagesInput = document.querySelector("#pages-ask").value;
   const genresInput = document.querySelector("#genres").value;
   const coverInput = document.querySelector("#cover-ask").value;
-  console.log(`title input is ${titleInput}`);
-  
+  console.log(coverInput);
 
   //assign a name to new book-number-check library length and add 1
   // let numberInLibrary= myLibrary.length;
@@ -138,10 +191,9 @@ function addBookToLibrary() {
     yearInput,
     pagesInput,
     genresInput,
-    coverInput, 
-    
+    coverInput
   );
-  console.log(book);
+
   // add to array of library
   myLibrary.push(book);
   //chekin
@@ -191,82 +243,65 @@ function addBookToLibrary() {
   const newDivItem = document.createElement("div");
   newDivItem.classList.add(`new-book-${i}`);
   newDivItem.innerHTML = itemHtml;
+
   //assign object's values to inner html
 
   shelf.appendChild(newDivItem);
 
   //read checkbox listener
   const readCheckbox = document.querySelector(`#item-${i} #read`);
-  readCheckbox.addEventListener('click', ()=>
-  { 
-
-    if(myLibrary[i-1].read=== "read")
-    {
-      myLibrary[i-1].read="unread";
-      console.log(myLibrary[i-1].read);
+  readCheckbox.addEventListener("click", () => {
+    if (myLibrary[i - 1].read === "read") {
+      myLibrary[i - 1].read = "unread";
+    } else {
+      myLibrary[i - 1].read = "read";
     }
-    else{
-      myLibrary[i-1].read="read";
-      console.log(myLibrary[i-1].read);
-    }
-    
-  })
+  });
   //select checkbox listener
-  const selectCheckBox=document.querySelector(`#item-${i} #mark`)
-  selectCheckBox.addEventListener('click', ()=>
-  {
-    if(myLibrary[i-1].select=== "selected")
-      {
-        myLibrary[i-1].select="unselected";
-        console.log(myLibrary[i-1].select);
-      }
-      else{
-        myLibrary[i-1].select="selected";
-        console.log(myLibrary[i-1].select);
-      }
-  })
-
+  const selectCheckBox = document.querySelector(`#item-${i} #mark`);
+  selectCheckBox.addEventListener("click", () => {
+    if (myLibrary[i - 1].select === "selected") {
+      myLibrary[i - 1].select = "unselected";
+    } else {
+      myLibrary[i - 1].select = "selected";
+    }
+  });
 
   // //cover
   // newItem.style.setProperty(`background-image`, `url(${newItem.coverInput}`);
   // this.reset();
+  ///set cover
+  const randomizedColor = randomColor(colors);
+  console.log(randomizedColor);
+  const newBookAppended = document.querySelector(`#item-${i}`);
+  const filePath = coverInput.name;
+  newBookAppended.style.backgroundColor = randomizedColor;
 }
 const formDialog = document.querySelector("#book-form");
 submit.addEventListener("click", () => {
-  
-  console.log("teraz czas na funkcje dodawania book");
   addBookToLibrary();
   formDialog.reset();
   // console.log(book1);
   console.log(myLibrary[0]);
-  console.log(myLibrary[0].read)
-  console.log(myLibrary[1]);
-  console.log(myLibrary[2]);
+
+  // console.log(myLibrary[1]);
+  // console.log(myLibrary[2]);
   popUp.close();
 });
 //remove listener
-const removeButton=document.querySelector('.remove');
-removeButton.addEventListener("click",() =>
-  {
-      // loop through library and search for objects select value- selected
-      for(let i=0; i<myLibrary.length; i++)
-      { console.log(myLibrary[i].select)
-        if(myLibrary[i].select === "selected"){
-          const bookToRemove=document.querySelector(`.new-book-${i+1}`);
-          if(bookToRemove){
-            bookToRemove.remove();
-            console.log("removed")
-          }
-          else{
-            console.log("item nof found")
-          }
-          
-        }
-        else{
-          console.log("next object to remove");
-        }
+const removeButton = document.querySelector(".remove");
+removeButton.addEventListener("click", () => {
+  // loop through library and search for objects select value- selected
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].select === "selected") {
+      const bookToRemove = document.querySelector(`.new-book-${i + 1}`);
+      if (bookToRemove) {
+        bookToRemove.remove();
+      } else {
+        console.log("item nof found");
       }
+    } else {
+      console.log("next object to remove");
+    }
   }
-  );
-
-
+});
