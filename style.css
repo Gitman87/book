@@ -88,8 +88,6 @@ header {
   color: white;
   border-style: none;
   border-radius: 1rem;
-
-  /* padding: 1rem 2.5rem 1rem 2.5rem; */
 }
 .add,
 #add-form {
@@ -123,50 +121,43 @@ header {
 main {
   padding: 5%;
 }
-.new-book-1{
-  height:min-content;
-  
+.new-book-1 {
+  height: min-content;
 }
 .inner-main {
   display: flex;
-  /* flex-direction: column; */
+
   flex-wrap: wrap;
-  min-height:100vh;
-  /* grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
-  height: max-content; */
-  /* justify-content: space-between; */
+  height: 100%;
+
   gap: 2rem;
 }
 .item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:.5rem;
-  /* width:max-content;
-  max-width: 33%; */
+  gap: 0.5rem;
 
   border-left: 0.8rem solid #42c9b8;
   background-color: #ffffff;
   max-width: 20rem;
- height: auto;
+  height: auto;
   padding: 1rem;
   border-radius: 1rem;
-  /* background-color: #ff7900; */
+
   font-family: "comic", sans-serif;
 }
 .item li {
   display: grid;
-  
-  gap:1rem;
+
+  gap: 1rem;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: repeat(auto-fit, minmax(1.5rem, 1fr));
-
-  /* flex-grow: 1; */
 }
-.mark,.read{
+.mark,
+.read {
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: end;
 }
 .item p:first-child {
@@ -177,17 +168,10 @@ main {
   overflow: scroll;
   font-weight: 600;
 }
-#mark:checked{
- color: #42c9b8;
-  width:200px;
+#mark:checked {
+  color: #42c9b8;
 }
 
-/* .item li, .item li p{
-  display:flex;
-  justify-content: center;
-  text-align: center;
- } */
-/* dialog */
 dialog {
   z-index: 10;
   position: fixed;
@@ -240,10 +224,6 @@ dialog input {
   gap: 0.5rem;
 }
 
-/* #cover-ask{
-  display:none;
-  
-} */
 #cover-ask::file-selector-button,
 #cancel,
 #add-form {
@@ -280,4 +260,21 @@ dialog input {
 #add-form:active {
   background-color: rgb(255, 222, 133);
   color: black;
+}
+@media only screen and (max-width: 500px) {
+  dialog {
+    left: 3.5rem;
+  }
+
+  dialog div {
+    flex-direction: column;
+  }
+  .button-dialog-section {
+    flex-direction: row;
+  }
+}
+@media only screen and (max-height: 450px) {
+  dialog {
+    top: 1rem;
+  }
 }

@@ -20,13 +20,7 @@ function Book(
 
   this.cover = cover;
   this.read = read;
-  this.info = function () {
-    if (this.read === "read") {
-      return `${this.title} by ${this.author}, ${this.pages} pages, read.`;
-    } else {
-      return `${this.title} by ${this.author}, ${this.pages} pages, not read yet.`;
-    }
-  };
+  
 }
 
 // click Add-button and open dialog window
@@ -43,7 +37,7 @@ cancel.addEventListener("click", () => {
   popUp.close();
   // alert("dupa");
 });
-//submit the form
+// form
 const submit = document.querySelector("#add-form");
 const form = document.querySelector("#book-form");
 const newBook = document.querySelector(".new-book");
@@ -76,8 +70,6 @@ function NewBook(
 }
 // Object.getPrototypeOf(NewBook.prototype);
 Object.setPrototypeOf(NewBook.prototype, Book.prototype);
-// Object.getPrototypeOf(NewBook.prototype);
-// const inputValues = document.querySelectorAll("input, select");
 
 //item background color randomized
 const colors = [
@@ -174,16 +166,6 @@ function addBookToLibrary() {
   const coverInput = document.querySelector("#cover-ask").value;
   console.log(coverInput);
 
-  //assign a name to new book-number-check library length and add 1
-  // let numberInLibrary= myLibrary.length;
-  //assign new object name
-  //  myLibrary.push(new NewBook(titleInput,
-  //   authorInput,
-  //   publisherInput,
-  //   yearInput,
-  //   pagesInput,
-  //   genresInput,
-  //   coverInput));
   const book = new NewBook(
     titleInput,
     authorInput,
@@ -196,7 +178,7 @@ function addBookToLibrary() {
 
   // add to array of library
   myLibrary.push(book);
-  //chekin
+  //checking
   console.log(myLibrary);
   let i = myLibrary.length;
   const itemHtml = `<div class="item" id="item-${i}">
@@ -267,9 +249,6 @@ function addBookToLibrary() {
     }
   });
 
-  // //cover
-  // newItem.style.setProperty(`background-image`, `url(${newItem.coverInput}`);
-  // this.reset();
   ///set cover
   const randomizedColor = randomColor(colors);
   console.log(randomizedColor);
@@ -281,11 +260,9 @@ const formDialog = document.querySelector("#book-form");
 submit.addEventListener("click", () => {
   addBookToLibrary();
   formDialog.reset();
-  // console.log(book1);
+
   console.log(myLibrary[0]);
 
-  // console.log(myLibrary[1]);
-  // console.log(myLibrary[2]);
   popUp.close();
 });
 //remove listener
